@@ -13,8 +13,11 @@ class CitiesPresenter: BasePresenter {
     
     private weak var sceneDelegate: CitiesSceneDelegate?
     private weak var viewDelegate: CitiesViewDelegate?
+    
     private let networkProvider = NetworkProvider()
+    
     private var cities = [City]()
+    private var filteredCities = [City]()
     private var page = 1
     
     init(sceneDelegate: CitiesSceneDelegate,
@@ -48,8 +51,7 @@ class CitiesPresenter: BasePresenter {
         return URL(string: fullURLString)
     }
     
-    // MARK: - TODO make private after finishing the unit test
-    func sortCitiesList(cities: [City]) -> [City] {
+    private func sortCitiesList(cities: [City]) -> [City] {
         guard !cities.isEmpty else { return [] }
         return cities.sorted { (firstCity, secondCity) -> Bool in
             if firstCity.name ?? "" != secondCity.name ?? "" {
@@ -93,17 +95,26 @@ class CitiesPresenter: BasePresenter {
         }
     }
     
+    func filterCitiesForSearchText(_ searchText: String?) {
+        guard let searchText = searchText else { return }
+        filteredCities = cities
+            .filter { $0.name?.lowercased()
+                .starts(with: searchText.lowercased()) ?? false }
+        viewDelegate?.reloadData()
+    }
+    
     func viewDidLoad() {
         fetchCities()
     }
     
-    func getCitiesCount() -> Int {
-        return cities.count
+    func getCitiesCount(_ isFiltering: Bool) -> Int {
+        return isFiltering ? filteredCities.count : cities.count
     }
     
     func configureCell(delegate: CitiesCellViewDelegate,
-                       for index: Int) {
-        let city = cities[index]
+                       for index: Int,
+                       _ isFiltering: Bool) {
+        let city = isFiltering ? filteredCities[index] : cities[index]
         delegate.displayCityName(name: city.name)
         delegate.displayCountryName(name: city.country)
         delegate.displayLocationImage(with: getLocationImageURL(for: index))

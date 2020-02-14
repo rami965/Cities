@@ -15,13 +15,26 @@ class CitiesViewController: BaseViewController {
     
     private let viewTitle = "Cities"
     
+    let searchController = UISearchController(searchResultsController: nil)
     let cellIdentifier = String(describing: CitiesTableViewCell.self)
+    
     var presenter: CitiesPresenter?
+    
+    var isSearchBarEmpty: Bool {
+        let isValidString = searchController
+            .searchBar.text?.isValidString ?? false
+        return !isValidString
+    }
+    
+    var isFiltering: Bool {
+      return searchController.isActive && !isSearchBarEmpty
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         setupTableView()
+        configureSearchController()
         
         presenter?.viewDidLoad()
     }
@@ -30,16 +43,28 @@ class CitiesViewController: BaseViewController {
         title = viewTitle
     }
     
+    private func configureSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Enter search keyword ..."
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+    
     private func setupTableView() {
-        tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.keyboardDismissMode = .onDrag
         
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil),
                            forCellReuseIdentifier: cellIdentifier)
         
         tableView.addInfiniteScroll { (tableView) in
-            self.presenter?.fetchCities(isLoadingMore: true)
+            if !self.isFiltering {
+                self.presenter?.fetchCities(isLoadingMore: true)
+            }
+            
             tableView.finishInfiniteScroll()
         }
     }
@@ -69,4 +94,11 @@ extension CitiesViewController: CitiesViewDelegate {
     func showError(error: String) {
         
     }
+}
+
+extension CitiesViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    let searchBar = searchController.searchBar
+    presenter?.filterCitiesForSearchText(searchBar.text)
+  }
 }
