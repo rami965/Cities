@@ -8,8 +8,8 @@ target 'Cities' do
   # Pods for Cities
   pod 'Moya'
   pod 'Kingfisher'
-  pod 'SkeletonView'
   pod 'UIScrollView-InfiniteScroll'
+  pod 'NVActivityIndicatorView'
 
   target 'CitiesTests' do
     inherit! :search_paths
