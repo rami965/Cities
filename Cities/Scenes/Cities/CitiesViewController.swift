@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UIScrollView_InfiniteScroll
 
 class CitiesViewController: BaseViewController {
     
@@ -36,6 +37,11 @@ class CitiesViewController: BaseViewController {
         
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil),
                            forCellReuseIdentifier: cellIdentifier)
+        
+        tableView.addInfiniteScroll { (tableView) in
+            self.presenter?.fetchCities(isLoadingMore: true)
+            tableView.finishInfiniteScroll()
+        }
     }
     
     func setPresenter(_ presenter: CitiesPresenter) {
@@ -48,12 +54,8 @@ extension CitiesViewController: CitiesViewDelegate {
         tableView.reloadData()
     }
     
-    func showLoadMoreIndicator() {
-        
-    }
-    
     func hideLoadMoreIndicator() {
-        
+        tableView.finishInfiniteScroll()
     }
     
     func showLoader() {
@@ -67,5 +69,4 @@ extension CitiesViewController: CitiesViewDelegate {
     func showError(error: String) {
         
     }
-    
 }

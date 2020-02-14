@@ -23,37 +23,6 @@ class CitiesPresenter: BasePresenter {
         self.viewDelegate = viewDelegate
     }
     
-    private func fetchCities(isLoadingMore: Bool = false) {
-        isLoadingMore
-            ? viewDelegate?.showLoadMoreIndicator()
-            : viewDelegate?.showLoader()
-        
-        networkProvider
-            .request(target: .cities(page: page),
-                     type: [City].self) { (cities, error) in
-                        
-                        isLoadingMore
-                            ? self.viewDelegate?.hideLoadMoreIndicator()
-                            : self.viewDelegate?.hideLoader()
-                        
-                        if let error = error {
-                            print(error.localizedDescription)
-                            self.viewDelegate?.showError(error: error.localizedDescription)
-                        } else {
-                            let fetchedCities = cities ?? []
-                            if isLoadingMore {
-                                self.cities.append(contentsOf: fetchedCities)
-                            } else {
-                                self.cities = fetchedCities
-                            }
-                            
-                            let sortedCities = self.sortCitiesList(cities: self.cities)
-                            self.cities = sortedCities
-                            self.viewDelegate?.reloadData()
-                        }
-        }
-    }
-    
     private func getLocationImageURL(for index: Int) -> URL? {
         guard let lat = cities[index].coordinates?.lat,
             let lng = cities[index].coordinates?.lon else { return nil }
@@ -79,6 +48,7 @@ class CitiesPresenter: BasePresenter {
         return URL(string: fullURLString)
     }
     
+    // MARK: - TODO make private after finishing the unit test
     func sortCitiesList(cities: [City]) -> [City] {
         guard !cities.isEmpty else { return [] }
         return cities.sorted { (firstCity, secondCity) -> Bool in
@@ -87,6 +57,39 @@ class CitiesPresenter: BasePresenter {
             } else {
                 return firstCity.country ?? "" < secondCity.country ?? ""
             }
+        }
+    }
+    
+    func fetchCities(isLoadingMore: Bool = false) {
+        //show loader
+        if !isLoadingMore { viewDelegate?.showLoader() }
+
+        //increse the page number
+        if isLoadingMore { page += 1 }
+        
+        networkProvider
+            .request(target: .cities(page: page),
+                     type: [City].self) { (cities, error) in
+                        
+                        isLoadingMore
+                            ? self.viewDelegate?.hideLoadMoreIndicator()
+                            : self.viewDelegate?.hideLoader()
+                        
+                        if let error = error {
+                            print(error.localizedDescription)
+                            self.viewDelegate?.showError(error: error.localizedDescription)
+                        } else {
+                            let fetchedCities = cities ?? []
+                            if isLoadingMore {
+                                self.cities.append(contentsOf: fetchedCities)
+                            } else {
+                                self.cities = fetchedCities
+                            }
+                            
+                            let sortedCities = self.sortCitiesList(cities: self.cities)
+                            self.cities = sortedCities
+                            self.viewDelegate?.reloadData()
+                        }
         }
     }
     
