@@ -22,6 +22,7 @@ class AppCoordinator: Coordinator {
     
     private func showCitiesScene() {
         let citiesViewController = CitiesConfigurator().configuredViewController(delegate: self)
+        navigationController.navigationBar.prefersLargeTitles = true
         navigationController.setViewControllers([citiesViewController], animated: true)
     }
 }
