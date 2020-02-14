@@ -8,7 +8,7 @@ target 'Cities' do
   # Pods for Cities
   pod 'Moya'
   pod 'Kingfisher'
-  pod 'SkeletonView'
+  pod 'SKActivityIndicatorView'
   pod 'UIScrollView-InfiniteScroll'
 
   target 'CitiesTests' do
