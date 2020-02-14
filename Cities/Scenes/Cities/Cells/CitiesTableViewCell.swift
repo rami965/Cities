@@ -25,9 +25,15 @@ class CitiesTableViewCell: UITableViewCell {
         
         cityNameLabel.numberOfLines = 0
         cityNameLabel.lineBreakMode = .byWordWrapping
+        cityNameLabel.textColor = .darkGray
+        cityNameLabel.font = UIFont.systemFont(ofSize: 20,
+                                               weight: .bold)
         
         countryNameLabel.numberOfLines = 0
         countryNameLabel.lineBreakMode = .byWordWrapping
+        cityNameLabel.textColor = .lightGray
+        countryNameLabel.font = UIFont.systemFont(ofSize: 18,
+                                                  weight: .semibold)
         
         cityLocationImageView.clipsToBounds = true
         cityLocationImageView.addCornerRadius(radius: cityLocationImageView.frame.width / 2)

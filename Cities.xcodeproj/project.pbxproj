@@ -137,10 +137,10 @@
 				2569669023F646500087910A /* Cells */,
 				2569667923F63EA00087910A /* CitiesViewController.swift */,
 				2569667A23F63EA00087910A /* CitiesViewController.xib */,
-				256966AD23F6DE050087910A /* CitiesViewController+TableView.swift */,
 				2569668E23F642E50087910A /* CitiesPresenter.swift */,
 				2569668A23F6424A0087910A /* CitiesConfigurator.swift */,
 				2569668C23F6427A0087910A /* CitiesProtocols.swift */,
+				256966AD23F6DE050087910A /* CitiesViewController+TableView.swift */,
 			);
 			path = Cities;
 			sourceTree = "<group>";
