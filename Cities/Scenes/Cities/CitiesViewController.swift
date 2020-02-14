@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SkeletonView
 
 class CitiesViewController: BaseViewController {
     
@@ -32,7 +31,6 @@ class CitiesViewController: BaseViewController {
     
     private func setupTableView() {
         tableView.separatorStyle = .none
-        tableView.isSkeletonable = true
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -59,11 +57,11 @@ extension CitiesViewController: CitiesViewDelegate {
     }
     
     func showLoader() {
-        
+        showLoaderView()
     }
     
     func hideLoader() {
-        
+        hideLoaderView()
     }
     
     func showError(error: String) {

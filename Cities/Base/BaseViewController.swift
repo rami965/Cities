@@ -7,13 +7,26 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, NVActivityIndicatorViewable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func showLoaderView() {
+        startAnimating(CGSize(width: 100, height: 100),
+                       type: .lineScale,
+                       color: .white,
+                       padding: 20,
+                       backgroundColor: .lightGray)
+    }
+    
+    func hideLoaderView() {
+        stopAnimating()
     }
     
 

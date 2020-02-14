@@ -7,15 +7,10 @@
 //
 
 import UIKit
-import SkeletonView
 
-extension CitiesViewController: SkeletonTableViewDataSource {
+extension CitiesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.getCitiesCount() ?? 0
-    }
-    
-    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return cellIdentifier
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -26,6 +21,6 @@ extension CitiesViewController: SkeletonTableViewDataSource {
     }
 }
 
-extension CitiesViewController: SkeletonTableViewDelegate {
+extension CitiesViewController: UITableViewDelegate {
     
 }
