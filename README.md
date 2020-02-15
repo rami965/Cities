@@ -1,3 +1,6 @@
+# Demo
+![Demo](Demo/demo.gif)
+
 # Overview
 
 This is a simple iOS application built using **Swift 5.1** and **Xcode 11.3** that displays a list of random cities with the ability to select a city from the list an show it's location on the map. The app is built using **MVP** with **Coordinator** pattern.  
