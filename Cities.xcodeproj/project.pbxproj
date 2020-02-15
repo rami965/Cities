@@ -27,6 +27,11 @@
 		256966B223F70D150087910A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256966B023F70D150087910A /* BaseViewController.swift */; };
 		256966B323F70D150087910A /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256966B123F70D150087910A /* BasePresenter.swift */; };
 		256966B523F748DA0087910A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256966B423F748DA0087910A /* String+Extension.swift */; };
+		256966B923F80BB40087910A /* MapLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256966B723F80BB40087910A /* MapLocationViewController.swift */; };
+		256966BA23F80BB40087910A /* MapLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 256966B823F80BB40087910A /* MapLocationViewController.xib */; };
+		256966BC23F80BFD0087910A /* MapLocationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256966BB23F80BFD0087910A /* MapLocationPresenter.swift */; };
+		256966BE23F80CB90087910A /* MapLocationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256966BD23F80CB90087910A /* MapLocationConfigurator.swift */; };
+		256966C023F80CDD0087910A /* MapLocationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256966BF23F80CDD0087910A /* MapLocationProtocols.swift */; };
 		2675FCF123F562D900C45C49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675FCF023F562D900C45C49 /* AppDelegate.swift */; };
 		2675FCFA23F562DD00C45C49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2675FCF923F562DD00C45C49 /* Assets.xcassets */; };
 		2675FCFD23F562DD00C45C49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2675FCFB23F562DD00C45C49 /* LaunchScreen.storyboard */; };
@@ -75,6 +80,11 @@
 		256966B023F70D150087910A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		256966B123F70D150087910A /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		256966B423F748DA0087910A /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		256966B723F80BB40087910A /* MapLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationViewController.swift; sourceTree = "<group>"; };
+		256966B823F80BB40087910A /* MapLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapLocationViewController.xib; sourceTree = "<group>"; };
+		256966BB23F80BFD0087910A /* MapLocationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationPresenter.swift; sourceTree = "<group>"; };
+		256966BD23F80CB90087910A /* MapLocationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationConfigurator.swift; sourceTree = "<group>"; };
+		256966BF23F80CDD0087910A /* MapLocationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationProtocols.swift; sourceTree = "<group>"; };
 		2675FCED23F562D900C45C49 /* Cities.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cities.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2675FCF023F562D900C45C49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2675FCF923F562DD00C45C49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -129,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				2569667F23F63EDE0087910A /* Cities */,
+				256966B623F80B850087910A /* Map Location */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -208,6 +219,18 @@
 				256966B123F70D150087910A /* BasePresenter.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		256966B623F80B850087910A /* Map Location */ = {
+			isa = PBXGroup;
+			children = (
+				256966B723F80BB40087910A /* MapLocationViewController.swift */,
+				256966B823F80BB40087910A /* MapLocationViewController.xib */,
+				256966BB23F80BFD0087910A /* MapLocationPresenter.swift */,
+				256966BD23F80CB90087910A /* MapLocationConfigurator.swift */,
+				256966BF23F80CDD0087910A /* MapLocationProtocols.swift */,
+			);
+			path = "Map Location";
 			sourceTree = "<group>";
 		};
 		2675FCE423F562D900C45C49 = {
@@ -418,6 +441,7 @@
 			files = (
 				2569669423F646770087910A /* CitiesTableViewCell.xib in Resources */,
 				2675FCFD23F562DD00C45C49 /* LaunchScreen.storyboard in Resources */,
+				256966BA23F80BB40087910A /* MapLocationViewController.xib in Resources */,
 				2569667C23F63EA00087910A /* CitiesViewController.xib in Resources */,
 				2675FCFA23F562DD00C45C49 /* Assets.xcassets in Resources */,
 			);
@@ -548,17 +572,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				2569669723F647720087910A /* UIView+Extension.swift in Sources */,
+				256966C023F80CDD0087910A /* MapLocationProtocols.swift in Sources */,
 				256966B323F70D150087910A /* BasePresenter.swift in Sources */,
 				2569669F23F6C0F60087910A /* NetworkProvider.swift in Sources */,
 				256966B523F748DA0087910A /* String+Extension.swift in Sources */,
 				256966A823F6C1600087910A /* AlertViewHelper.swift in Sources */,
 				2569668D23F6427A0087910A /* CitiesProtocols.swift in Sources */,
+				256966BE23F80CB90087910A /* MapLocationConfigurator.swift in Sources */,
 				256966AE23F6DE050087910A /* CitiesViewController+TableView.swift in Sources */,
 				2569669A23F6BEBA0087910A /* City.swift in Sources */,
+				256966B923F80BB40087910A /* MapLocationViewController.swift in Sources */,
 				2569668923F6416B0087910A /* AppCoordinator.swift in Sources */,
 				256966B223F70D150087910A /* BaseViewController.swift in Sources */,
 				2569668B23F6424A0087910A /* CitiesConfigurator.swift in Sources */,
 				2675FCF123F562D900C45C49 /* AppDelegate.swift in Sources */,
+				256966BC23F80BFD0087910A /* MapLocationPresenter.swift in Sources */,
 				2569668723F640130087910A /* Coordinator.swift in Sources */,
 				256966A123F6C0F60087910A /* NetworkService.swift in Sources */,
 				2569669323F646770087910A /* CitiesTableViewCell.swift in Sources */,
