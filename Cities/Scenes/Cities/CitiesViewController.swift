@@ -61,6 +61,10 @@ class CitiesViewController: BaseViewController {
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil),
                            forCellReuseIdentifier: cellIdentifier)
         
+        configureInfiniteScroll()
+    }
+    
+    private func configureInfiniteScroll() {
         tableView.addInfiniteScroll { (tableView) in
             if !self.isFiltering {
                 self.presenter?.fetchCities(isLoadingMore: true)
@@ -98,7 +102,10 @@ extension CitiesViewController: CitiesViewDelegate {
     }
     
     func showError(error: String) {
-        
+        AlertViewHelper.showAlertWithOneButton(with: "Error",
+                                               message: error,
+                                               buttonTitle: "Ok",
+                                               on: self)
     }
 }
 
