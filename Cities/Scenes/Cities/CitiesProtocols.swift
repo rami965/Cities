@@ -16,7 +16,7 @@ protocol CitiesViewDelegate: class {
     func showLoader()
     func hideLoader()
     func hideLoadMoreIndicator()
-    func reloadData()
+    func reloadData(animated: Bool)
     func showError(error: String)
 }
 
