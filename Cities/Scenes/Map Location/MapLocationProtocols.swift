@@ -13,9 +13,5 @@ protocol MapLocationSceneDelegate: class {
 }
 
 protocol MapLocationViewDelegate: class {
-//    func showLoader()
-//    func hideLoader()
-//    func hideLoadMoreIndicator()
-//    func reloadData(animated: Bool)
-//    func showError(error: String)
+    
 }
