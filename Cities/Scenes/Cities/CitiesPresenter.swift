@@ -37,7 +37,7 @@ class CitiesPresenter: BasePresenter {
         guard let lat = cities[index].coordinates?.lat,
             let lng = cities[index].coordinates?.lon else { return nil }
         let center = "\(lat.description),\(lng.description)"
-        let zoomLevel = "13"
+        let zoomLevel = "8"
         let imageSize = "150x150"
         let mapType = "roadmap"
         let separator = "%7Clabel:C%7C"
