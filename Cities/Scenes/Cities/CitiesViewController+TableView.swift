@@ -22,5 +22,7 @@ extension CitiesViewController: UITableViewDataSource {
 }
 
 extension CitiesViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.didSelectCity(at: indexPath.row, isFiltering)
+    }
 }

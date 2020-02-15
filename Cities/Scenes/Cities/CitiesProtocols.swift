@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CitiesSceneDelegate: class {
-    
+    func didSelectCity(lat: String?, lon: String?)
 }
 
 protocol CitiesViewDelegate: class {

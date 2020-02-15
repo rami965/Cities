@@ -118,4 +118,10 @@ class CitiesPresenter: BasePresenter {
         delegate.displayCountryName(name: city.country)
         delegate.displayLocationImage(with: getLocationImageURL(for: index))
     }
+    
+    func didSelectCity(at index: Int, _ isFiltering: Bool) {
+        let city = isFiltering ? filteredCities[index] : cities[index]
+        sceneDelegate?.didSelectCity(lat: city.coordinates?.lat,
+                                     lon: city.coordinates?.lon)
+    }
 }
