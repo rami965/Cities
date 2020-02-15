@@ -90,7 +90,7 @@ class CitiesPresenter: BasePresenter {
                             
                             let sortedCities = self.sortCitiesList(cities: self.cities)
                             self.cities = sortedCities
-                            self.viewDelegate?.reloadData()
+                            self.viewDelegate?.reloadData(animated: true)
                         }
         }
     }
@@ -100,7 +100,7 @@ class CitiesPresenter: BasePresenter {
         filteredCities = cities
             .filter { $0.name?.lowercased()
                 .starts(with: searchText.lowercased()) ?? false }
-        viewDelegate?.reloadData()
+        viewDelegate?.reloadData(animated: true)
     }
     
     func viewDidLoad() {

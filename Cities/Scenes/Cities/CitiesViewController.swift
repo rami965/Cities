@@ -56,6 +56,7 @@ class CitiesViewController: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.keyboardDismissMode = .onDrag
+        tableView.tableFooterView = UIView()
         
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil),
                            forCellReuseIdentifier: cellIdentifier)
@@ -63,9 +64,9 @@ class CitiesViewController: BaseViewController {
         tableView.addInfiniteScroll { (tableView) in
             if !self.isFiltering {
                 self.presenter?.fetchCities(isLoadingMore: true)
+            } else {
+                tableView.finishInfiniteScroll()
             }
-            
-            tableView.finishInfiniteScroll()
         }
     }
     
@@ -75,8 +76,13 @@ class CitiesViewController: BaseViewController {
 }
 
 extension CitiesViewController: CitiesViewDelegate {
-    func reloadData() {
-        tableView.reloadData()
+    func reloadData(animated: Bool) {
+        animated
+            ? UIView.transition(with: tableView,
+                                duration: 0.35,
+                                options: .transitionCrossDissolve,
+                                animations: { self.tableView.reloadData() })
+            : tableView.reloadData()
     }
     
     func hideLoadMoreIndicator() {
