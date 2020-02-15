@@ -11,18 +11,28 @@ import MapKit
 
 class MapLocationViewController: BaseViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak private var mapView: MKMapView!
+    
+    // MARK: - Private Properties
     
     private let annotation = MKPointAnnotation()
     private let spanZoomLevel = 0.5
     
+    // MARK: - Public Properties
+    
     var presenter: MapLocationPresenter?
 
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         addMapAnnotation()
     }
+    
+    // MARK: - Private Functions
     
     private func configureView() {
         navigationItem.largeTitleDisplayMode = .never
@@ -47,11 +57,14 @@ class MapLocationViewController: BaseViewController {
         mapView.setRegion(cityRegion, animated: true)
     }
     
+    // MARK: - Public Functions
+    
     func setPresenter(_ presenter: MapLocationPresenter) {
         self.presenter = presenter
     }
 }
 
+// MARK: - MapLocationViewDelegate
 extension MapLocationViewController: MapLocationViewDelegate {
     
 }

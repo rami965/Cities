@@ -16,15 +16,22 @@ enum `Type`: String, Codable {
 }
 
 struct NetworkError: Decodable, Error {
+    
+    // MARK: - Public Properties
+    
     var type: Type?
     let status: Int?
     let error: String?
+    
+    // MARK: - Mapping Keys
     
     enum CodingKeys: String, CodingKey {
         case status
         case error
     }
 
+    // MARK: - Initializers
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         status = try values.decodeIfPresent(Int.self, forKey: .status)

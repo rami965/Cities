@@ -8,10 +8,12 @@
 
 import Foundation
 
+// MARK: - CitiesSceneDelegateProtocol
 protocol CitiesSceneDelegate: class {
     func didSelectCity(lat: String?, lon: String?)
 }
 
+// MARK: - CitiesViewDelegateProtocol
 protocol CitiesViewDelegate: class {
     func showLoader()
     func hideLoader()
@@ -20,6 +22,7 @@ protocol CitiesViewDelegate: class {
     func showError(error: String)
 }
 
+// MARK: - CitiesCellViewDelegateProtocol
 protocol CitiesCellViewDelegate: class {
     func displayCityName(name: String?)
     func displayCountryName(name: String?)

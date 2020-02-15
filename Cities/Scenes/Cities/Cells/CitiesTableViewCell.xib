@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="115"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YGv-ho-Y1r">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapLocationPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="YGv-ho-Y1r">
                         <rect key="frame" x="30" y="27.5" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="d9f-q6-fxg"/>
@@ -25,13 +25,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adL-jX-1NN">
-                        <rect key="frame" x="110" y="37.5" width="190" height="21"/>
+                        <rect key="frame" x="110" y="31.5" width="190" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCC-Vb-m14">
-                        <rect key="frame" x="110" y="66.5" width="190" height="21"/>
+                        <rect key="frame" x="110" y="60.5" width="190" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                     <constraint firstItem="TCC-Vb-m14" firstAttribute="leading" secondItem="YGv-ho-Y1r" secondAttribute="trailing" constant="20" id="n6f-en-Ul6"/>
                     <constraint firstAttribute="trailing" secondItem="TCC-Vb-m14" secondAttribute="trailing" constant="20" id="pRK-zP-fYL"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TCC-Vb-m14" secondAttribute="bottom" constant="16" id="ulj-iG-9Ca"/>
-                    <constraint firstItem="adL-jX-1NN" firstAttribute="top" secondItem="YGv-ho-Y1r" secondAttribute="top" constant="10" id="ybQ-sK-H8h"/>
+                    <constraint firstItem="adL-jX-1NN" firstAttribute="top" secondItem="YGv-ho-Y1r" secondAttribute="top" constant="4" id="ybQ-sK-H8h"/>
                     <constraint firstItem="YGv-ho-Y1r" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="zWG-BL-dSU"/>
                 </constraints>
             </tableViewCellContentView>
@@ -60,4 +60,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="98.772321428571431"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="MapLocationPlaceholder" width="112" height="112"/>
+    </resources>
 </document>

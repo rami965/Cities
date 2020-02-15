@@ -8,10 +8,12 @@
 
 import Foundation
 
+// MARK: - MapLocationSceneDelegateProtocol
 protocol MapLocationSceneDelegate: class {
     
 }
 
+// MARK: - MapLocationViewDelegateProtocol
 protocol MapLocationViewDelegate: class {
     
 }

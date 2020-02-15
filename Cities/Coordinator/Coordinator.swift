@@ -17,6 +17,7 @@ protocol Coordinator: class {
     func removeChildCoordinator(_ coordinator: Coordinator)
 }
 
+// MARK: - Defualt Implementation
 extension Coordinator {
     func addChildCoordinator(_ coordinator: Coordinator) {
         for child in childCoordinators {

@@ -11,14 +11,20 @@ import Kingfisher
 
 class CitiesTableViewCell: UITableViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak private var cityNameLabel: UILabel!
     @IBOutlet weak private var countryNameLabel: UILabel!
     @IBOutlet weak private var cityLocationImageView: UIImageView!
+    
+    // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
         configureCellView()
     }
+    
+    // MARK: - Private Functions
     
     private func configureCellView() {
         selectionStyle = .none
@@ -35,11 +41,14 @@ class CitiesTableViewCell: UITableViewCell {
         countryNameLabel.font = UIFont.systemFont(ofSize: 18,
                                                   weight: .semibold)
         
+        cityLocationImageView.addBorder(with: 2,
+                                        color: .systemTeal)
         cityLocationImageView.clipsToBounds = true
         cityLocationImageView.addCornerRadius(radius: cityLocationImageView.frame.width / 2)
     }
 }
 
+// MARK: - CitiesCellViewDelegate
 extension CitiesTableViewCell: CitiesCellViewDelegate {
     func displayCityName(name: String?) {
         cityNameLabel.text = name

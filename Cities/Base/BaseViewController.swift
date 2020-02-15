@@ -11,11 +11,15 @@ import NVActivityIndicatorView
 
 class BaseViewController: UIViewController, NVActivityIndicatorViewable {
 
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    // MARK: - Public Functions
     
     func showLoaderView() {
         startAnimating(CGSize(width: 100, height: 100),
@@ -28,16 +32,4 @@ class BaseViewController: UIViewController, NVActivityIndicatorViewable {
     func hideLoaderView() {
         stopAnimating()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
