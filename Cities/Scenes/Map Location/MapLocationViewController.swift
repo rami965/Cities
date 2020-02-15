@@ -14,6 +14,7 @@ class MapLocationViewController: BaseViewController {
     @IBOutlet weak private var mapView: MKMapView!
     
     private let annotation = MKPointAnnotation()
+    private let spanZoomLevel = 0.5
     
     var presenter: MapLocationPresenter?
 
@@ -32,6 +33,18 @@ class MapLocationViewController: BaseViewController {
             else { return }
         annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
+        mapView.setCenter(coordinate, animated: true)
+        
+        // MARK: - Optional call this function for specified zoom level
+//        zoom(coordinate: coordinate)
+    }
+    
+    private func zoom(coordinate: CLLocationCoordinate2D) {
+        let span = MKCoordinateSpan(latitudeDelta: spanZoomLevel,
+                                    longitudeDelta: spanZoomLevel)
+        let cityRegion = MKCoordinateRegion(center: coordinate,
+                                            span: span)
+        mapView.setRegion(cityRegion, animated: true)
     }
     
     func setPresenter(_ presenter: MapLocationPresenter) {
