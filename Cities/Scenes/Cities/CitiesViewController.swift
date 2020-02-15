@@ -127,8 +127,8 @@ extension CitiesViewController: CitiesViewDelegate {
 
 // MARK: - UISearchResultsUpdating
 extension CitiesViewController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-    let searchBar = searchController.searchBar
-    presenter?.filterCitiesForSearchText(searchBar.text)
-  }
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        presenter?.filter(with: searchBar.text)
+    }
 }

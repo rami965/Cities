@@ -25,8 +25,8 @@ class CitiesPresenter: BasePresenter {
     
     // MARK: - Initializers
     
-    init(sceneDelegate: CitiesSceneDelegate,
-         viewDelegate: CitiesViewDelegate) {
+    init(sceneDelegate: CitiesSceneDelegate?,
+         viewDelegate: CitiesViewDelegate?) {
         self.sceneDelegate = sceneDelegate
         self.viewDelegate = viewDelegate
     }
@@ -104,12 +104,18 @@ class CitiesPresenter: BasePresenter {
         }
     }
     
-    func filterCitiesForSearchText(_ searchText: String?) {
-        guard let searchText = searchText else { return }
-        filteredCities = cities
+    func filter(with searchText: String?) {
+        filteredCities = filterCitiesForSearchText(unfilteredList: cities,
+                                                   searchText)
+        viewDelegate?.reloadData(animated: true)
+    }
+    
+    func filterCitiesForSearchText(unfilteredList: [City],
+                                   _ searchText: String?) -> [City] {
+        guard let searchText = searchText else { return [] }
+        return unfilteredList
             .filter { $0.name?.lowercased()
                 .starts(with: searchText.lowercased()) ?? false }
-        viewDelegate?.reloadData(animated: true)
     }
     
     func viewDidLoad() {
