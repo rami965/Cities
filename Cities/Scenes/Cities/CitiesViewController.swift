@@ -41,6 +41,7 @@ class CitiesViewController: BaseViewController {
     
     private func configureView() {
         title = viewTitle
+        navigationItem.largeTitleDisplayMode = .always
     }
     
     private func configureSearchController() {

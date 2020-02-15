@@ -13,14 +13,26 @@ class MapLocationViewController: BaseViewController {
     
     @IBOutlet weak private var mapView: MKMapView!
     
+    private let annotation = MKPointAnnotation()
+    
     var presenter: MapLocationPresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configureView()
+        addMapAnnotation()
+    }
+    
+    private func configureView() {
+        navigationItem.largeTitleDisplayMode = .never
     }
 
+    private func addMapAnnotation() {
+        guard let coordinate = presenter?.getCLLocationCoordinates()
+            else { return }
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
+    }
     
     func setPresenter(_ presenter: MapLocationPresenter) {
         self.presenter = presenter

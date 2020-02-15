@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class MapLocationPresenter: BasePresenter {
     
@@ -24,6 +25,17 @@ class MapLocationPresenter: BasePresenter {
         self.viewDelegate = viewDelegate
         self.cityLat = cityLat
         self.cityLon = cityLon
+    }
+    
+    func getCLLocationCoordinates() -> CLLocationCoordinate2D? {
+        guard let lat = cityLat,
+            let lon = cityLon,
+            let latDouble = Double(lat),
+            let lonDouble = Double(lon)
+            else { return nil }
+        
+        return CLLocationCoordinate2D(latitude: latDouble,
+                                      longitude: lonDouble)
     }
     
 }
