@@ -41,6 +41,8 @@ class CitiesTableViewCell: UITableViewCell {
         countryNameLabel.font = UIFont.systemFont(ofSize: 18,
                                                   weight: .semibold)
         
+        cityLocationImageView.addBorder(with: 2,
+                                        color: .systemTeal)
         cityLocationImageView.clipsToBounds = true
         cityLocationImageView.addCornerRadius(radius: cityLocationImageView.frame.width / 2)
     }
