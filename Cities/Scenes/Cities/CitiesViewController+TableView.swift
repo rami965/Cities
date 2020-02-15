@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - UITableViewDataSource
 extension CitiesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.getCitiesCount(isFiltering) ?? 0
@@ -21,6 +22,7 @@ extension CitiesViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension CitiesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.didSelectCity(at: indexPath.row, isFiltering)

@@ -11,14 +11,20 @@ import Kingfisher
 
 class CitiesTableViewCell: UITableViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak private var cityNameLabel: UILabel!
     @IBOutlet weak private var countryNameLabel: UILabel!
     @IBOutlet weak private var cityLocationImageView: UIImageView!
+    
+    // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
         configureCellView()
     }
+    
+    // MARK: - Private Functions
     
     private func configureCellView() {
         selectionStyle = .none
@@ -40,6 +46,7 @@ class CitiesTableViewCell: UITableViewCell {
     }
 }
 
+// MARK: - CitiesCellViewDelegate
 extension CitiesTableViewCell: CitiesCellViewDelegate {
     func displayCityName(name: String?) {
         cityNameLabel.text = name

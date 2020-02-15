@@ -11,14 +11,22 @@ import UIScrollView_InfiniteScroll
 
 class CitiesViewController: BaseViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak private var tableView: UITableView!
     
-    private let viewTitle = "Cities"
+    // MARK: - Private Properties
     
-    let searchController = UISearchController(searchResultsController: nil)
+    private let viewTitle = "Cities"
+    private let searchController = UISearchController(searchResultsController: nil)
+    
+    // MARK: - Public Properties
+    
     let cellIdentifier = String(describing: CitiesTableViewCell.self)
     
     var presenter: CitiesPresenter?
+    
+    // MARK: - Computed Properties
     
     var isSearchBarEmpty: Bool {
         let isValidString = searchController
@@ -30,6 +38,8 @@ class CitiesViewController: BaseViewController {
       return searchController.isActive && !isSearchBarEmpty
     }
 
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -38,6 +48,8 @@ class CitiesViewController: BaseViewController {
         
         presenter?.viewDidLoad()
     }
+    
+    // MARK: - Private Functions
     
     private func configureView() {
         title = viewTitle
@@ -75,11 +87,14 @@ class CitiesViewController: BaseViewController {
         }
     }
     
+    // MARK: - Public Functions
+    
     func setPresenter(_ presenter: CitiesPresenter) {
         self.presenter = presenter
     }
 }
 
+// MARK: - CitiesViewDelegate
 extension CitiesViewController: CitiesViewDelegate {
     func reloadData(animated: Bool) {
         animated
@@ -110,6 +125,7 @@ extension CitiesViewController: CitiesViewDelegate {
     }
 }
 
+// MARK: - UISearchResultsUpdating
 extension CitiesViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     let searchBar = searchController.searchBar

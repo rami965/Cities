@@ -10,8 +10,12 @@ import Foundation
 
 class CitiesPresenter: BasePresenter {
     
+    // MARK: - Delegates
+    
     private weak var sceneDelegate: CitiesSceneDelegate?
     private weak var viewDelegate: CitiesViewDelegate?
+    
+    // MARK: - Private Properties
     
     private let networkProvider = NetworkProvider()
     
@@ -19,11 +23,15 @@ class CitiesPresenter: BasePresenter {
     private var filteredCities = [City]()
     private var page = 1
     
+    // MARK: - Initializers
+    
     init(sceneDelegate: CitiesSceneDelegate,
          viewDelegate: CitiesViewDelegate) {
         self.sceneDelegate = sceneDelegate
         self.viewDelegate = viewDelegate
     }
+    
+    // MARK: - Private Functions
     
     private func getLocationImageURL(for index: Int) -> URL? {
         guard let lat = cities[index].coordinates?.lat,
@@ -60,6 +68,8 @@ class CitiesPresenter: BasePresenter {
             }
         }
     }
+    
+    // MARK: - Public Functions
     
     func fetchCities(isLoadingMore: Bool = false) {
         //show loader

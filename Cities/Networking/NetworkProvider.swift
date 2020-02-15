@@ -10,12 +10,18 @@ import Moya
 
 class NetworkProvider {
     
+    // MARK: - Network Provider Singleton
+    
     static var shared = NetworkProvider()
+    
+    // MARK: - Private Properties
     
     private let provider = MoyaProvider<NetworkService>(
         plugins: [NetworkLoggerPlugin(verbose: true,
                                       cURL: true)]
     )
+    
+    // MARK: - Public Functions
     
     func request<T: Decodable>(target: NetworkService,
                                type: T.Type,

@@ -8,6 +8,8 @@
 
 import Moya
 
+// MARK: - API Targets
+
 enum NetworkService {
     case cities(page: Int)
 }

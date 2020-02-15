@@ -11,11 +11,17 @@ import CoreLocation
 
 class MapLocationPresenter: BasePresenter {
     
+    // MARK: - Delegates
+    
     private weak var sceneDelegate: MapLocationSceneDelegate?
     private weak var viewDelegate: MapLocationViewDelegate?
     
+    // MARK: - Private Properties
+    
     private var cityLat: String?
     private var cityLon: String?
+    
+    // MARK: - Initializers
     
     init(sceneDelegate: MapLocationSceneDelegate?,
          viewDelegate: MapLocationViewDelegate?,
@@ -26,6 +32,10 @@ class MapLocationPresenter: BasePresenter {
         self.cityLat = cityLat
         self.cityLon = cityLon
     }
+    
+    // MARK: - Private Functions
+    
+    // MARK: - Public Functions
     
     func getCLLocationCoordinates() -> CLLocationCoordinate2D? {
         guard let lat = cityLat,

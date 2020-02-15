@@ -7,10 +7,15 @@
 //
 
 struct City: Decodable {
+    
+    // MARK: - Public Properties
+    
     var id: String?
     var country: String?
     var name: String?
     var coordinates: CityCoordinates?
+    
+    // MARK: - Mapping Keys
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -21,8 +26,13 @@ struct City: Decodable {
 }
 
 struct CityCoordinates: Decodable {
+    
+    // MARK: - Public Properties
+    
     var lat: String?
     var lon: String?
+    
+    // MARK: - Mapping Keys
     
     enum CodingKeys: CodingKey {
         case lat
