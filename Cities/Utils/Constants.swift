@@ -25,5 +25,5 @@ struct ApiPaths {
 // MARK: - API Keys
 
 struct APIKeys {
-    static let staticMapsKey = "AIzaSyB0e1mQbui0PGF8cOIT9HP9TzOaxGFjwT8"
+    static let staticMapsKey = "YOUR_API_KEY"
 }
